@@ -14,17 +14,14 @@ console.log('\n');
 
 /*
  Expected output:
-
  FirstName LastName
  <AssignmentName>
  <Today's Date>
-
  -- DISPLAYING CELL PHONE DETAILS --
  Manufacturer: <manufacturer>
  Model: <model>
  Color: <color>
  Price: <price>
-
 */
 // start program
 function cellPhone(model){
@@ -49,7 +46,7 @@ function cellPhone(model){
 }
 
 var cell = new cellPhone("Iphone 11");
-
+console.log(" -- DISPLAYING CELL PHONE DETAILS --");
 console.log(cell.getDetails());
 
 // end program
