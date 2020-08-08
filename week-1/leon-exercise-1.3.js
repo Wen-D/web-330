@@ -26,7 +26,7 @@ console.log('\n');
  Price: <price>
 
 */
-
+// start program
 function cellPhone(model){
     this.manufacturer = "Apple";
     this.model = model;
@@ -52,4 +52,4 @@ var cell = new cellPhone("Iphone 11");
 
 console.log(cell.getDetails());
 
-
+// end program
