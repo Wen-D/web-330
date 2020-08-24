@@ -129,7 +129,7 @@ var informix = informixFactory.createDatabase({
     password: "imix-pass",
     server: "localhost:8080"
 });
-
+// output the results
 console.log(oracle);
 console.log(informix)
 
