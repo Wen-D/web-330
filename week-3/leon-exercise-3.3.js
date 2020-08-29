@@ -22,7 +22,6 @@ console.log('\n');
 
  Same database instance? true
 
- Create a new function and name it databaseSingletonTest()
 
 databaseSingleTest() function
     Create two new database instances
@@ -33,6 +32,7 @@ Call the databaseSingletonTest() function
 
 // start program
 
+// Create a new function and name it databaseSingletonTest()
 
 var DatabaseSingleton = (function() {
     var instance;
@@ -50,18 +50,19 @@ var DatabaseSingleton = (function() {
     }
 })();
 
+/*
+
+*/
+
 function databaseInit() {
+    //   Create two new database instances
     var oracle = DatabaseSingleton.getInstance();
     var postgres = DatabaseSingleton.getInstance();
+    //    Call the console.log() function and output whether the two instances match
     console.log("One database instance? %s ", (oracle === postgres));
 }
 
 databaseInit();
-
-
-
-
-
 
 
 // end program
