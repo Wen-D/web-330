@@ -1,0 +1,47 @@
+<!-- =================================================
+; Title: Assignment 4.3 HTTP PUT and DELETE operations
+; Author: Professor Krasso
+; Date: 30 August 2020
+; Modified By: Wendy Leon
+; Description: 4.3 HTTP PUT and DELETE operations
+;==================================================-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Assignment name</title>
+
+        <!-- jQuery reference -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+        <h2>HTTP DELETE Request</h2>
+        <button id="delete1"> Delete Security User</button>
+    <script>
+
+        $(function() {
+            $("#delete1").click(function () 
+                {
+                    $.ajax(
+                        {
+                            url: 'http://httpbin.org/delete',
+                            dataType: 'json',
+                            type: 'DELETE',
+                            data: 
+                            {
+                                username: 'admin1', password: 'this-secret', email: 'test@thisemail.com'
+                            },
+                                success: function (data, status)
+                                {
+                                    console.log('Username:' + data.form.username + '\nPassword:' + data.form.password + '\nEmail: ' + data.form.email + '\nStatus: ' + status);
+                                }
+                            
+                        })
+                })
+        });
+
+    </script>
+
+
+    </body>
+</html>
