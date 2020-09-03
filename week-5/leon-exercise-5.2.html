@@ -1,0 +1,65 @@
+
+<!-- 
+============================================
+; Title: Assignment 5.2 Proxy Patter
+; Author: Professor Massoud
+; Date: 9/3/20
+; Modified By: Wendy Leon
+; Description: 5.2 Proxy Patters
+;===========================================
+-->
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>Exercise 5.2 - The Proxy Pattern</title>
+
+    <!-- jquery Reference Library -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+<style>
+    .center{text-align-last: center; margin: 40px auto;}
+    .header{font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 35px;
+            color: white;
+           }
+    #promoMsg{display: block;
+             margin: 60px auto;
+             color: #341751;
+             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+             font-size: 25px;
+             } 
+    #showPromo{background: #7037bc;
+               padding: 20px;
+               border: 1px solid #7037bc;
+               color:white;
+               font-size: 18px;
+               display: block;
+    }
+          
+</style>
+<body style="background-color: #ff4779;">
+    <h2 class = "center header">THE Proxy Pattern</h2>
+    <button id="showPromo" class="center">Show promo code</button>
+    
+    <span id="promoMsg" class="center"></span>
+
+<script>
+    var promo = {
+        discount: "50%",
+        product: "jewelry",
+        product2: "shoes",
+        display:function(){
+            //clear msg box
+            $("#promoMsg").html("");
+            //append promo text
+            $("#promoMsg").append("<br/>This month enjoy " + this.discount + " on all " + this.product +
+            " and " + this.product2);
+        }
+    };
+
+    $("#showPromo").click($.proxy(promo, "display"));
+</script>
+
+
+
+</body></html>
