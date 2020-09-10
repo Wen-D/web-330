@@ -1,19 +1,20 @@
 
 <!-- 
 ============================================
-; Title: Assignment 6.2 MVVM
+; Title: Assignment 6.3 ViewModel Object Literals
 ; Author: Professor Massoud
 ; Date: 9/10/20
 ; Modified By: Wendy Leon
-; Description: Assignment 6.2 MVVM
+; Description: Assignment 6.2 View Model Object Literals
 ;===========================================
 -->
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Exercise 6.2</title>
+        <title>Exercise 6.3</title>
 
         <!-- Stylesheet - Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -21,7 +22,7 @@
         <!-- JavaScript Libraries -->
         <script src="../knockout-3.5.1.js"></script>
     </head>
-    <body> 
+    <body>
         <!-- Nav Bar -->
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <ul class="navbar-nav">
@@ -35,36 +36,38 @@
                 <a class="nav-link" href="#">Contact-Us</a>
               </li>
             </ul>
-            </nav>
-        <h2>MVVM with Knockout</h2>
-        <!-- Form with knockout -->    
-        <div class="form-group">
-            <label for="txtMake">FirstName:</label>
-            <input type="text" class="form-control alert-warning" data-bind="value:firstName" id="firstName" />
-        </div>
-        <div class="formgroup">
-            <label for="txtModel">LastName:</label>
-            <input type="text" class="form-control alert-warning" data-bind="value:lastName" id="lastName" />
-        </div>
-        <div class="formgroup">
-            <label for="txtModel">Email Address:</label>
-            <input type="text" class="form-control alert-warning" data-bind="value:email" id="email" />
-        </div>
+        </nav>
+
+        <h2>Object Literal Example</h2>
+         <!-- Observables -->
         <div class="form-group">
 
+            <label for="txtFirstName">First Name: </label>
+            <input type="text" class="form-control alert-warning" data-bind="value:firstName" id="txtFirstName">
+
         </div>
 
-    <script>
-        // KO observables 
-        function TruckViewModel(){
-            this.firstName = ko.observable("Wen-D");
-            this.lastName = ko.observable("Leon");
-            this.email = ko.observable("email@domainname.com");
-        }
+        <div class="form-group">
+            <label for="txtLastName">Last Name: </label>
+            <input type="text" class="form-control alert-warning" data-bind="value:lastName" id="txtLastName">
+        </div>
+        <div class="form-group">
+            <label for="txtLastName">Email: </label>
+            <input type="text" class="form-control alert-warning" data-bind="value:email" id="txtEmail">
+        </div>
+        <script>
+            // object literal notation
+            var personViewModel = {
+                firstName: "John",
+                lastName: "Smith",
+                email: "email@domain.com"
+            };
 
-        ko.applyBindings(new TruckViewModel());
+            ko.applyBindings(personViewModel);
+            console.log( personViewModel);
 
-    </script>
+        </script>
+
 
 
     </body>
