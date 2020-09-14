@@ -55,13 +55,8 @@
   <button id="next">Next Question</button>
   <button id="submit" type="submit">Submit Quiz</button>
   <div id="results"></div>
-  <div data-bind = "text: yourAnswer1"></div>
+  
   <script>
-
-
-
-
-
 
   // build quiz starts here
   function buildQuiz(){
@@ -111,7 +106,64 @@
 
 //
 function showResults() {
+  const answerContainers = quizContainer.querySelectorAll('.answers');
+  let numCorrect = 0;
+  var correctAnswer='';
+  var output2 = [];
+  var resultsContainer = [];
+  myQuestions.forEach((currentQuestion, questionNumber) => {
+    // find selected answer
+    const answerContainer = answerContainers[questionNumber];
+    const selector = `input[name=question${questionNumber}]:checked`;
+    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+    
+    const questionAnswers = [];
+    // if answer is correct
 
+
+    for(letter in currentQuestion.answers){
+
+      // ...add an HTML radio button
+      if (userAnswer === currentQuestion.correctAnswer) {
+        // add to the number of correct answers
+        numCorrect++;
+        color="green";
+        icon="";
+
+      }
+      // if answer is wrong or blank
+      else {
+        // color the answers red
+        color="red";
+        icon="";
+      }
+      questionAnswers.push(
+        `<label>
+          <div class="resultAnswer">
+           ${letter} :
+            ${currentQuestion.answers[letter]}
+          </div>
+        </label> `);    
+    }
+
+      // add this question and its answers to the output
+      output2.push(
+        `<div class="form-group slide" id="question${questionNumber+1}">
+          <div class="question"> 
+            <h2>Question ${questionNumber+1}</h2>
+            ${currentQuestion.question} 
+          </div>
+
+          <div class="answers"> ${questionAnswers.join("")} </div>
+          <div data-bind = "text:checkAnswer${questionNumber+1}"></div>
+        </div>`);
+
+  });
+  resultsContainer.push(
+    `
+      ${numCorrect} out of ${myQuestions.length} + output2;
+    `);
+  results.innerHTML =  resultsContainer;
 }
 //
 
