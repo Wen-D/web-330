@@ -47,7 +47,7 @@
 
 <body>
 
-  <div class="quiz-container">
+  <div class="quiz-container" id="quiz-container">
     <div id="quiz"> </div>
   </div>
 
@@ -112,6 +112,11 @@ function showResults() {
   var output2 = [];
   var resultsContainer = [];
   var icon ='';
+
+  document.getElementById("quiz-container").style.display = "none";
+  document.getElementById("previous").style.display = "none";
+  document.getElementById("submit").style.display = "none";
+  //
   output2.push(`
     <div class="container-sm margin-top-40">
       <div class="accordion" id="accordionExample">
@@ -156,7 +161,6 @@ function showResults() {
           </div>
         `);   
     }
-
       // add this question and its answers to the output
       output2.push(
         `   
@@ -168,36 +172,36 @@ function showResults() {
                   </button>
                 </h2>
               </div>
-            </div>
 
-            <div id="collaps${questionNumber2}" class="collapse show" aria-labelledby="heading${questionNumber2}" data-parent="#accordionExample" style="">
-              <div class="card-body row">
-                <div class="col-md-12 jumbotron">
-                  <h4>${currentQuestion2.question}</h4>
+              <div id="collaps${questionNumber2}" class="collapse show" aria-labelledby="heading${questionNumber2}" data-parent="#accordionExample" style="">
+                <div class="card-body row">
+                  <div class="col-md-12 jumbotron">
+                    <h4>${currentQuestion2.question}</h4>
+                  </div>
+                  <div class="col-md-12">
+                    <h4>Answers:</h4>
+                  </div>
+                  <div class="row col-md-12">
+                  ${questionAnswers.join("")}
+                  </div>
+                  <div class="row col-md-12">
+                    <div data-bind = "text:checkAnswer${questionNumber2+1}"> Your Answer</div>
+                  </div>  
                 </div>
-                <div class="col-md-12">
-                  <h4>Answers:</h4>
-                </div>
-                <div class="row col-md-12">
-                ${questionAnswers.join("")}
-                </div>
-                <div class="row col-md-12">
-                  <div data-bind = "text:checkAnswer${questionNumber2+1}"> Your Answer</div>
-                </div>  
-              </div>
+              </div>  
             </div>  
 
-          </div>    
-        </div>`);
+          `);
 
   });
   resultsContainer.push(
-    `
-      ${numCorrect} out of ${myQuestions.length} + ${output2};
-    
+    `     </div>    
+      </div>
     </div>
     `);
-  results.innerHTML =  resultsContainer;
+    resultsContainer.unshift(`${numCorrect} out of ${myQuestions.length} + ${output2.join('')}`);
+    results.innerHTML =  resultsContainer;
+  //${numCorrect} out of ${myQuestions.length} + ${output2};
 }
 //
 
