@@ -111,20 +111,26 @@ function showResults() {
   var correctAnswer='';
   var output2 = [];
   var resultsContainer = [];
-  myQuestions.forEach((currentQuestion, questionNumber) => {
+
+  output2.push(`
+    <div class="container-sm margin-top-40">
+      <div class="accordion" id="accordionExample">
+  
+  `);
+  myQuestions.forEach((currentQuestion2, questionNumber2) => {
     // find selected answer
-    const answerContainer = answerContainers[questionNumber];
-    const selector = `input[name=question${questionNumber}]:checked`;
+    const answerContainer = answerContainers[questionNumber2];
+    const selector = `input[name=question${questionNumber2}]:checked`;
     const userAnswer = (answerContainer.querySelector(selector) || {}).value;
     
     const questionAnswers = [];
     // if answer is correct
 
 
-    for(letter in currentQuestion.answers){
+    for(letter in currentQuestion2.answers){
 
       // ...add an HTML radio button
-      if (userAnswer === currentQuestion.correctAnswer) {
+      if (userAnswer === currentQuestion2.correctAnswer) {
         // add to the number of correct answers
         numCorrect++;
         color="green";
@@ -141,27 +147,38 @@ function showResults() {
         `<label>
           <div class="resultAnswer">
            ${letter} :
-            ${currentQuestion.answers[letter]}
+            ${currentQuestion2.answers[letter]}
           </div>
         </label> `);    
     }
 
       // add this question and its answers to the output
       output2.push(
-        `<div class="form-group slide" id="question${questionNumber+1}">
-          <div class="question"> 
-            <h2>Question ${questionNumber+1}</h2>
-            ${currentQuestion.question} 
-          </div>
+        `   
+            <div class="card margin-top-20">
+              <div class="card-header" id="headin${questionNumber2}">
+                <h2 class="mb-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse${questionNumber2}" aria-expanded="true" aria-controls="collapse${questionNumber2}">
+                    Question ${questionNumber2+1} ${currentQuestion2.question} 
+                  </button>
+                </h2>
+              </div>
+            </div>
 
-          <div class="answers"> ${questionAnswers.join("")} </div>
-          <div data-bind = "text:checkAnswer${questionNumber+1}"></div>
+
+              <div class="answers"> ${questionAnswers.join("")} </div>
+              <div data-bind = "text:checkAnswer${questionNumber2+1}"></div>
+
+
+          </div>    
         </div>`);
 
   });
   resultsContainer.push(
     `
-      ${numCorrect} out of ${myQuestions.length} + output2;
+      ${numCorrect} out of ${myQuestions.length} + ${output2};
+    
+    </div>
     `);
   results.innerHTML =  resultsContainer;
 }
