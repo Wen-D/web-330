@@ -149,7 +149,7 @@ function showResults() {
            ${letter} :
             ${currentQuestion2.answers[letter]}
           </div>
-        </label> `);    
+        </label> `);    //GENERATE THE ANSWERS HERE USING THE BOOTSTRAP 12 COL THAT HOLDS THE ANSWERS  
     }
 
       // add this question and its answers to the output
@@ -159,11 +159,27 @@ function showResults() {
               <div class="card-header" id="headin${questionNumber2}">
                 <h2 class="mb-0">
                   <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse${questionNumber2}" aria-expanded="true" aria-controls="collapse${questionNumber2}">
-                    Question ${questionNumber2+1} ${currentQuestion2.question} 
+                    Question ${questionNumber2+1} 
                   </button>
                 </h2>
               </div>
             </div>
+
+            <div id="collaps${questionNumber2}" class="collapse show" aria-labelledby="heading${questionNumber2}" data-parent="#accordionExample" style="">
+              <div class="card-body row">
+                <div class="col-md-12 jumbotron">
+                  <h4>${currentQuestion2.question}</h4>
+                </div>
+                <div class="col-md-12">
+                  <h4>Answers:</h4>
+                </div>
+
+                // ADD ANSWER STUFF HERE WITH JOIN
+                
+              </div>
+            </div>  
+
+
 
 
               <div class="answers"> ${questionAnswers.join("")} </div>
