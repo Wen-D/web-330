@@ -1,13 +1,3 @@
-
-<!-- 
-============================================
-; Title: Assignment 7.2 If Binding
-; Author: Professor Massoud
-; Date: 9/1/20
-; Modified By: Wendy Leon
-; Description: Assignment 7.2 If Binding
-;===========================================
--->
 <html lang="en">
 
     <head>
@@ -29,39 +19,40 @@
     <br /><br />
     <h2>Example 2</h2>
     <div class="form-group">
-        <label for="txtName">Book Name:</label>
+        <label for="txtName">Name:</label>
         <input type="text" data-bind="value:name" class="form-control" id="txtName">
     </div>
     <div data-bind="if: displayName">
         <div class="form-group">
-            <label for="txtAuthor">Author:</label>
-            <input type="text" data-bind="value:author" class="form-control" id="txtAuthor">
+            <label for="txtlast">Last:</label>
+            <input type="text" data-bind="value:last" class="form-control" id="txtlast">
         </div>
     </div>
     <br />
-    <div data-bind="if: author">
-        <h2><span id="bookOutput" class="alertSuccess" data-bind="text:displayBook"></span></h2>
+    <div data-bind="if: last">
+        <h2><span id="fullOutput" class="alertSuccess" data-bind="text:displayFullName"></span></h2>
     </div>
 
 </div>
     <script>
 
-        function BookViewModel(){
+        function PersonViewModel(){
             
             this.name=ko.observable('');
-            this.author=ko.observable('');
+            this.last=ko.observable('');
 
             this.displayName=ko.pureComputed(function(){
                 return this.name();
             }, this);
 
-            this.displayBook=ko.pureComputed(function(){
-                return this.name() + "by" + this.author();
+            this.displayFullName=ko.pureComputed(function(){
+                console.log(this.name() + " b y" + this.last());
+                return `Name: ${this.name()} Last Name: ${this.last()}`;
             }, this);
 
         }
 
-        ko.applyBindings(new BookViewModel());
+        ko.applyBindings(new PersonViewModel());
 
     </script>
 
