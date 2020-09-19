@@ -1,0 +1,61 @@
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Exercise 7.2</title>
+
+        <!-- Stylesheet - Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+        <!-- JavaScript Libraries -->
+        <script src = "https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script>
+    </head>
+
+    <body>
+
+<div role="main" class="container">
+    <br /><br />
+    <h2>Example 2</h2>
+    <div class="form-group">
+        <label for="txtName">Book Name:</label>
+        <input type="text" data-bind="value:name" class="form-control" id="txtName">
+    </div>
+    <div data-bind="if: displayName">
+        <div class="form-group">
+            <label for="txtAuthor">Author:</label>
+            <input type="text" data-bind="value:author" class="form-control" id="txtAuthor">
+        </div>
+    </div>
+    <br />
+    <div data-bind="if: author">
+        <h2><span id="bookOutput" class="alertSuccess" data-bind="text:displayBook"></span></h2>
+    </div>
+
+</div>
+    <script>
+
+        function BookViewModel(){
+            
+            this.name=ko.observable('');
+            this.author=ko.observable('');
+
+            this.displayName=ko.pureComputed(function(){
+                return this.name();
+            }, this);
+
+            this.displayBook=ko.pureComputed(function(){
+                return this.name() + "by" + this.author();
+            }, this);
+
+        }
+
+        ko.applyBindings(new BookViewModel());
+
+    </script>
+
+
+    </body>
+
+</html>
