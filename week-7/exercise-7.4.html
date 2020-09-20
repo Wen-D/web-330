@@ -1,0 +1,81 @@
+<!-- 
+============================================
+; Title: Assignment 7.4 – Other Bindings
+; Author: Professor Massoud
+; Date: 9/20/20
+; Modified By: Wendy Leon
+; Description: Assignment 7.4 – Other Bindings
+;===========================================
+-->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Exercise 7.4</title>
+
+        <!-- Stylesheet - Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+        <!-- JavaScript Libraries -->
+        <script src = "https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script>
+    </head>
+
+    <body>
+
+        <div role="main" class="container">
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Link</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: tutorial">
+                    <tr>
+
+                        <td data-bind="text: title"></td>
+                        <td data-bind="text: description"></td>
+                        <td><a data-bind="attr: {href:url}, style: {'color': 'blue'}" target="_blank">Visit site</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        
+        </div>
+        <script>
+            function TutorialViewModel() {
+                this.tutorial = ko.observableArray ([
+                    {
+                        title: "Observable Arrays",
+                        description: "Obesrvable arrays are used to detect and respond to changes of a collection of things",
+                        url: "https://knockoutjs.com/documentation/observableArrays.html"},
+                    {
+                        title: "Creating view models with observables",
+                        description: "Model-View-View Model (MVVM) is a design pattern for building user interfaces",
+                        url: "https://knockoutjs.com/documentation/observables.html"    
+                    },
+                    {
+                        title: "Computed Observables",
+                        description: " functions that are dependent on one or more other observables, and will automatically update whenever any of these dependencies change.",
+                        url: "https://knockoutjs.com/documentation/computedObservables.html"
+                    },
+                    {
+                        title: "The text binding",
+                        description: "Causes the associated DOM element to display the text value of your parameter.",
+                        url: "https://knockoutjs.com/documentation/text-binding.html"    
+                    },
+                    {
+                        title: "The html binding",
+                        description: "Causes the associated DOM element to display the HTML specified by your parameter.",
+                        url: "https://knockoutjs.com/documentation/html-binding.html"
+                    }
+                ]);
+       
+            }
+            ko.applyBindings(new TutorialViewModel());
+        </script>    
+    </body>
+</html>
